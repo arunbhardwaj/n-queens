@@ -20,7 +20,7 @@
 
     // Don't use this to get a single row
     rows: function() {
-      return _(_.range(this.get('n-1'))).map(function(rowIndex) {
+      return _(_.range(this.get('n'))).map(function(rowIndex) {
         return this.get(rowIndex);
       }, this);
     },
@@ -84,7 +84,7 @@
     // --------------------------------------------------------------
     //
     hasRowConflictAt: function(rowIndex) {
-      var row = this.get(rowIndex);
+      var row = this.attributes[rowIndex];
       var sum = row.reduce((sum, item) => {
         return sum + item;
       });
