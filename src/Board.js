@@ -84,7 +84,7 @@
     // --------------------------------------------------------------
     //
     hasRowConflictAt: function(rowIndex) {
-      var row = this.attributes[rowIndex];
+      var row = this.get(rowIndex);
       var sum = row.reduce((sum, item) => {
         return sum + item;
       });
