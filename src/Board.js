@@ -20,7 +20,7 @@
 
     // Don't use this to get a single row
     rows: function() {
-      return _(_.range(this.get('n'))).map(function(rowIndex) {
+      return _(_.range(this.get('n-1'))).map(function(rowIndex) {
         return this.get(rowIndex);
       }, this);
     },
@@ -109,7 +109,6 @@
 
     // COLUMNS - run from top to bottom
     // --------------------------------------------------------------
-    //
     hasColConflictAt: function(colIndex) {
       // Iterate through every row and check the index? no
       var sum = 0;
