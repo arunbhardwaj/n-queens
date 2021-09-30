@@ -128,9 +128,12 @@ window.findNQueensSolution = function(n) {
       }
 
       innerFunction(solution, row + 1);
-      if (found) { return solution; }
+      if (found) {
+        return solution;
+      }
       if (n > 1) {
-        //
+        // We have to toggle off even for a single solution bc queens
+        // can't find a solution during a first pass (unlike rooks);
         solution.togglePiece(row, col);
       }
     }
@@ -149,16 +152,25 @@ window.findNQueensSolution = function(n) {
 // };
 
 // return the number of nxn chessboards that exist, with n queens placed such that none of them can attack each other
+
+/*
+    n = 3
+    row = 2
+    col = 2
+  [
+    [1,0,0],
+    [0,0,1],
+    [0,0,0]
+  ]
+  */
 window.countNQueensSolutions = function(n) {
-  var solutionCount = 0; //fixme
+  var solutionCount = 0;
   var solution = new Board({n: n});
 
   if (n === 0) {
     return 0;
   }
 
-  // make the n x n matrix
-  var solution = new Board({n: n});
   var found = false;
 
   // recurse
@@ -167,6 +179,7 @@ window.countNQueensSolutions = function(n) {
     if (row === n) {
       found = true;
       return;
+      solutionCount++;
     }
     // iterate over the row from 0 -> n
     for (var col = 0; col < n; col++) {
